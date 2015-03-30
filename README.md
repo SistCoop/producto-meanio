@@ -1,2 +1,1 @@
-# producto-meanio
-producto-meanio
+README: pkproducto

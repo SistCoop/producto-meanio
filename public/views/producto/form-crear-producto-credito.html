@@ -1,0 +1,82 @@
+<div class="page-title full-width">
+    <div class="title-env">
+        <h1 class="title">Crear producto credito</h1>
+        <p class="description">Crea un producto de credito para usarlo despues.</p>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Ingrese los datos</h3>
+        <div class="panel-options">
+            <a href="" data-toggle="panel">
+                <span class="collapse-icon">–</span>
+                <span class="expand-icon">+</span>
+            </a>
+            <a href="" data-toggle="remove">
+                ×
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <form name="form" data-ng-submit="submit()" novalidate>
+
+
+                    <div>
+                        <h4><strong>Datos principales</strong></h4>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group" ng-class="{ 'validate-has-error' : form.codigo.$invalid && (form.codigo.$touched || form.$submitted)}">
+                                    <label>Codigo</label>
+                                    <input type="text" name="codigo" ng-model="view.producto.codigo" ng-maxlength="30" class="form-control" autofocus required/>
+                                    <div ng-messages="form.codigo.$error" ng-if="form.codigo.$touched || form.$submitted">
+                                        <div class="validate-has-error" ng-message="required">Ingrese abreviatura.</div>
+                                        <div class="validate-has-error" ng-message="maxlength">Maximo 30 caracteres.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group" ng-class="{ 'validate-has-error' : form.denominacion.$invalid && (form.denominacion.$touched || form.$submitted)}">
+                                    <label>Denominacion</label>
+                                    <input type="text" name="denominacion" ng-model="view.producto.denominacion" ng-maxlength="60" class="form-control" required/>
+                                    <div ng-messages="form.denominacion.$error" ng-if="form.denominacion.$touched || form.$submitted">
+                                        <div class="validate-has-error" ng-message="required">Ingrese denominacion.</div>
+                                        <div class="validate-has-error" ng-message="maxlength">Maximo 60 caracteres.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group" data-ng-class="{ 'validate-has-error' : form.tipoPersona.$invalid && (form.$submitted)}">
+                                    <div class="input-group">
+                                        <ui-select name="tipoPersona" data-ng-model="combo.selected.tipoPersona" required autofocus>
+                                            <ui-select-match placeholder="Select one">{{$select.selected.denominacion}}</ui-select-match>
+                                            <ui-select-choices repeat="item in combo.tipoPersona | filter: $select.search">
+                                                <div data-ng-bind-html="item.denominacion | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <span class="input-group-btn"><button type="button" class="btn btn-white"><span class="glyphicon glyphicon-search"></span></button></span>
+                                    </div>
+                                    <div ng-messages="form.tipoPersona.$error" ng-if="form.tipoPersona.$touched || form.$submitted">
+                                        <div class="validate-has-error" ng-message="required">Ingrese denominacion.</div>
+                                        <div class="validate-has-error" ng-message="maxlength">Maximo 60 caracteres.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            <button type="submit" class="btn btn-primary" ladda="control.block" data-style="expand-right">Guardar</button>
+                            <button type="button" class="btn btn-white" ui-sref="^.^.buscarSucursal">Cancelar</button>
+                        </p>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

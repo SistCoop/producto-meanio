@@ -1,0 +1,21 @@
+{
+    "name": "sg-producto",
+    "version": "1.0.2",
+    "main": "./dist/sg-producto.js",
+    "description": "Restful factories for producto",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SistCoop/sg-producto.git"
+    },
+    "dependencies": {
+        "lodash": ">=1.3.0 <2.5.0",
+        "angular": "*",
+        "restangular": "1.4.0",
+        "underscore": "1.7.0"
+    },
+    "ignore": [
+        "node_modules",
+        "components",
+        "lib"
+    ]
+}
