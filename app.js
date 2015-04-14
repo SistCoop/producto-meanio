@@ -26,6 +26,9 @@ Producto.register(function(app, auth, database) {
 
     Producto.aggregateAsset('css', 'producto.css');
 
+    //angular messages
+    Producto.aggregateAsset('js', '../lib/angular-messages/angular-messages.js');
+
     //sidebar dependences
     Producto.aggregateAsset('js', '../lib/angular-recursion/angular-recursion.js');
     Producto.aggregateAsset('js', '../lib/sg-sidebar-dropdown/src/sg-sidebar-dropdown.js');
@@ -50,17 +53,37 @@ Producto.register(function(app, auth, database) {
     Producto.aggregateAsset('js', '../lib/underscore/underscore.js');
     Producto.aggregateAsset('js', '../lib/restangular/dist/restangular.js');
 
+    //angular-input-masks
+    Producto.aggregateAsset('js', '../lib/angular-input-masks/angular-input-masks.js');
+
+    //ui notification
+    Producto.aggregateAsset('js', '../lib/angular-ui-notification/dist/angular-ui-notification.min.js');
+    Producto.aggregateAsset('css', '../lib/angular-ui-notification/dist/angular-ui-notification.min.css');
+
+    //angular-ladda
+    Producto.aggregateAsset('css', '../lib/ladda/dist/ladda-themeless.min.css');
+    Producto.aggregateAsset('js', '../lib/ladda/dist/spin.min.js');
+    Producto.aggregateAsset('js', '../lib/ladda/dist/ladda.min.js');
+    Producto.aggregateAsset('js', '../lib/angular-ladda/dist/angular-ladda.min.js');
+
+    //sg-persona
+    Producto.aggregateAsset('js', '../lib/sg-persona/dist/sg-persona.js');
+
     //sg-producto
     Producto.aggregateAsset('js', '../lib/sg-producto/dist/sg-producto.js');
 
     //module dependencies
     Producto.angularDependencies([
+        'ngMessages',
         'sgSidebarDropdown',
         'ui.grid',
         'ui.grid.edit',
         'ui.grid.selection',
         'ui.select',
         'restangular',
+        'ui.utils.masks',
+        'ui-notification',
+        'angular-ladda',
         'sg-persona',
         'sg-producto'
     ]);

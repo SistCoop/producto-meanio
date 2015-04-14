@@ -5,7 +5,7 @@ angular.module('mean.producto').controller('CrearProductoCreditoController', ['$
     function($scope, $state, SGProductoCredito, SGTipoPersona) {
 
         $scope.view = {
-            producto:   SGTipoPersona.$build()
+            producto:   SGProductoCredito.$build()
         };
 
         $scope.combo = {
