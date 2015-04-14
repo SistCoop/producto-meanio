@@ -46,8 +46,9 @@ Producto.register(function(app, auth, database) {
     Producto.aggregateAsset('js', '../lib/underscore/underscore.js');
     Producto.aggregateAsset('js', '../lib/restangular/dist/restangular.js');
 
-    //sg-producto
-    Producto.aggregateAsset('js', '../lib/sg-persona/dist/sg-persona.js');
+    //restangular
+    Producto.aggregateAsset('js', '../lib/underscore/underscore.js');
+    Producto.aggregateAsset('js', '../lib/restangular/dist/restangular.js');
 
     //sg-producto
     Producto.aggregateAsset('js', '../lib/sg-producto/dist/sg-producto.js');
