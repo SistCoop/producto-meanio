@@ -40,11 +40,7 @@ angular.module('mean.producto').config(['$stateProvider',
                         return SGProductoCredito.$find($stateParams.id);
                     }
                 },
-                controller: function($scope, $stateParams, productoCredito) {
-                    $scope.params = {};
-                    $scope.params.id = $stateParams.id;
-                    $scope.params.object = productoCredito;
-                }
+                controller: 'EditarProductoCreditoController'
             })
             .state('producto.app.editarProductoCredito.resumen', {
                 url: '/resumen',
