@@ -1,25 +1,43 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.producto').controller('BuscarProductoCuentaPersonalController', ['$scope', '$state',
-    function($scope, $state) {
+angular.module('mean.producto').controller('BuscarProductoCuentaPersonalController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona',
+    function($scope, $state, SGProductoCredito, SGTipoPersona) {
 
         $scope.combo = {
-            tipoPersona: undefined
+            tipoPersona: undefined,
+            moneda: undefined
         };
         $scope.combo.selected = {
-            tipoPersona: undefined
+            tipoPersona: undefined,
+            moneda: undefined
         };
 
-        $scope.nuevo = function(){
-            //$state.go('^.crearPersonaNatural.datosPrincipales');
-            alert('go');
+        $scope.check = {
+            moneda: undefined
         };
+
+        $scope.loadCombo = function(){
+            $scope.combo.tipoPersona = SGTipoPersona.$search().$object;
+        };
+        $scope.loadCombo();
+
+        $scope.loadCheck = function(){
+            $scope.check.moneda = {
+                pen: true,
+                usd: true,
+                eur: true
+            };
+        };
+        $scope.loadCheck();
 
         $scope.filterOptions = {
             filterText: undefined,
-            offset: 0,
-            limit: 10
+            firstResult: 0,
+            maxResults: 10,
+
+            tipoPersona: undefined,
+            moneda: []
         };
 
         $scope.gridOptions = {
@@ -28,12 +46,13 @@ angular.module('mean.producto').controller('BuscarProductoCuentaPersonalControll
             enableRowHeaderSelection: false,
             multiSelect: false,
             columnDefs: [
-                {field: 'tipoDocumento', displayName: 'Documento'},
-                {field: 'numeroDocumento', displayName: 'Numero'},
-                {field: 'apellidoPaterno', displayName: 'Ap.paterno'},
-                {field: 'apellidoMaterno', displayName: 'Ap.materno'},
-                {field: 'nombres', displayName: 'Nombres'},
-                {field: 'sexo', displayName: 'Sexo'},
+                {field: 'codigo', displayName: 'Codigo'},
+                {field: 'denominacion', displayName: 'Denominacion'},
+                {field: 'tipoPersona', displayName: 'T.persona'},
+                {field: 'moneda', displayName: 'moneda'},
+                {field: 'montoMinimo', displayName: 'Minimo', cellFilter: 'currency: ""'},
+                {field: 'montoMaximo', displayName: 'Maximo', cellFilter: 'currency: ""'},
+                {field: 'estado', displayName: 'Estado'},
                 {
                     name: 'edit',
                     displayName: 'Edit',
@@ -41,16 +60,35 @@ angular.module('mean.producto').controller('BuscarProductoCuentaPersonalControll
                 }
             ]
         };
+
         $scope.gridActions = {
             edit: function(row){
-                //$state.go('^.editarPersonaNatural.resumen', {id: row.id});
-                alert('edit');
+                $state.go('^.crearProductoCredito.resumen', {id: row.id});
             }
         };
 
+        $scope.nuevo = function(){
+            $state.go('^.crearProductoCredito');
+        };
+
         $scope.search = function(){
-            //$scope.gridOptions.data = PersonaNatural.$search($scope.filterOptions).$object;
-            alert('searching');
+
+            if($scope.combo.selected.tipoPersona){
+                $scope.filterOptions.tipoPersona = $scope.combo.selected.tipoPersona.denominacion;
+            }
+
+            $scope.filterOptions.moneda = [];
+            if($scope.check.moneda.pen === true) {
+                $scope.filterOptions.moneda[0] = 'PEN';
+            }
+            if($scope.check.moneda.usd) {
+                $scope.filterOptions.moneda[1] = 'USD';
+            }
+            if($scope.check.moneda.eur) {
+                $scope.filterOptions.moneda[2] = 'EUR';
+            }
+
+            $scope.gridOptions.data = SGProductoCredito.$search($scope.filterOptions).$object;
         };
 
     }
