@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkproducto').controller('CrearProductoCreditoController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona',
+angular.module('mean.producto').controller('CrearProductoCreditoController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona',
     function($scope, $state, SGProductoCredito, SGTipoPersona) {
 
         $scope.view = {

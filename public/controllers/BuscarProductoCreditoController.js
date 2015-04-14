@@ -1,14 +1,20 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkproducto').controller('BuscarProductoCreditoController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona',
+angular.module('mean.producto').controller('BuscarProductoCreditoController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona',
     function($scope, $state, SGProductoCredito, SGTipoPersona) {
 
         $scope.combo = {
-            tipoPersona: undefined
+            tipoPersona: undefined,
+            moneda: undefined
         };
         $scope.combo.selected = {
-            tipoPersona: undefined
+            tipoPersona: undefined,
+            moneda: undefined
+        };
+
+        $scope.check = {
+            moneda: undefined
         };
 
         $scope.loadCombo = function(){
@@ -16,14 +22,22 @@ angular.module('mean.pkproducto').controller('BuscarProductoCreditoController', 
         };
         $scope.loadCombo();
 
-        $scope.nuevo = function(){
-            $state.go('^.crearProductoCredito');
+        $scope.loadCheck = function(){
+            $scope.check.moneda = {
+                pen: true,
+                usd: true,
+                eur: true
+            };
         };
+        $scope.loadCheck();
 
         $scope.filterOptions = {
             filterText: undefined,
             firstResult: 0,
-            maxResults: 10
+            maxResults: 10,
+
+            tipoPersona: undefined,
+            moneda: []
         };
 
         $scope.gridOptions = {
@@ -34,8 +48,8 @@ angular.module('mean.pkproducto').controller('BuscarProductoCreditoController', 
             columnDefs: [
                 {field: 'codigo', displayName: 'Codigo'},
                 {field: 'denominacion', displayName: 'Denominacion'},
-                {field: 'tipoPersona', displayName: 'tipoPersona'},
-                {field: 'monedas', displayName: 'monedas'},
+                {field: 'tipoPersona', displayName: 'T.persona'},
+                {field: 'moneda', displayName: 'moneda'},
                 {field: 'montoMinimo', displayName: 'Minimo', cellFilter: 'currency: ""'},
                 {field: 'montoMaximo', displayName: 'Maximo', cellFilter: 'currency: ""'},
                 {field: 'estado', displayName: 'Estado'},
@@ -53,7 +67,27 @@ angular.module('mean.pkproducto').controller('BuscarProductoCreditoController', 
             }
         };
 
+        $scope.nuevo = function(){
+            $state.go('^.crearProductoCredito');
+        };
+
         $scope.search = function(){
+
+            if($scope.combo.selected.tipoPersona){
+                $scope.filterOptions.tipoPersona = $scope.combo.selected.tipoPersona.denominacion;
+            }
+
+            $scope.filterOptions.moneda = [];
+            if($scope.check.moneda.pen === true) {
+                $scope.filterOptions.moneda[0] = 'PEN';
+            }
+            if($scope.check.moneda.usd) {
+                $scope.filterOptions.moneda[1] = 'USD';
+            }
+            if($scope.check.moneda.eur) {
+                $scope.filterOptions.moneda[2] = 'EUR';
+            }
+
             $scope.gridOptions.data = SGProductoCredito.$search($scope.filterOptions).$object;
         };
 

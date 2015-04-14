@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.pkproducto').service('$menuItemsProducto', [
+angular.module('mean.producto').service('$menuItemsProducto', [
     function() {
 
         this.menuItems = [];
@@ -87,8 +87,8 @@ angular.module('mean.pkproducto').service('$menuItemsProducto', [
 
             var productos = this.addItem('Productos', '', 'linecons-inbox');
 
-            productos.addItem('Cuentas personales', 'pkproducto.app.buscarProductoCuentaPersonal');
-            productos.addItem('Creditos', 'pkproducto.app.buscarProductoCredito');
+            productos.addItem('Cuentas personales', 'producto.app.buscarProductoCuentaPersonal');
+            productos.addItem('Creditos', 'producto.app.buscarProductoCredito');
 
             return this;
         };

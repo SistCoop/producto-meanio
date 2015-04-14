@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.pkproducto').controller('BuscarProductoCuentaPersonalController', ['$scope', '$state',
+angular.module('mean.producto').controller('BuscarProductoCuentaPersonalController', ['$scope', '$state',
     function($scope, $state) {
 
         $scope.combo = {

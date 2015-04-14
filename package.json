@@ -1,7 +1,7 @@
 {
-  "name": "pkproducto",
+  "name": "producto",
   "version": "0.0.1",
-  "description": "Some description of pkproducto",
+  "description": "Some description of producto",
   "author": {
     "name": "mean scaffold"
   },
