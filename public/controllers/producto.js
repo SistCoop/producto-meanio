@@ -9,11 +9,3 @@ angular.module('mean.producto').controller('ProductoController', ['$scope', 'Glo
         };
     }
 ]);
-
-angular.module('mean.producto').config(function(sgProductoProvider) {
-    sgProductoProvider.restUrl = 'https://someweb';
-});
-
-angular.module('mean.producto').config(function(sgPersonaProvider) {
-    sgPersonaProvider.restUrl = 'https://someweb';
-});
