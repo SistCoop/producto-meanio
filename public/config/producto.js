@@ -14,10 +14,10 @@ angular.module('mean.producto').config(function(sgPersonaProvider) {
     sgPersonaProvider.restUrl = 'http://localhost:8080/persona/rest';
 });
 
-angular.module('mean.producto').controller('ProductoSidebarController', ['$rootScope', '$menuItemsProducto',
-    function($rootScope, $menuItemsProducto) {
+angular.module('mean.producto').controller('ProductoSidebarController', ['$scope', '$menuItemsProducto',
+    function($scope, $menuItemsProducto) {
 
-        $rootScope.$menuItemsAngulr = $menuItemsProducto.prepareSidebarMenu().getAll();
+        $scope.menuItems = $menuItemsProducto.prepareSidebarMenu().getAll();
 
     }
 ]);

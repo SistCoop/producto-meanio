@@ -6,8 +6,7 @@ angular.module('mean.producto').config(['$stateProvider',
             .state('producto', {
                 abstract: true,
                 url: '/producto',
-                templateUrl: 'producto/views/tpls/layout/body.html',
-                controller: 'ProductoSidebarController'
+                templateUrl: 'producto/views/tpls/layout/body.html'
             })
             .state('producto.home', {
                 url: '/home',
@@ -17,6 +16,7 @@ angular.module('mean.producto').config(['$stateProvider',
                 url: '/app',
                 templateUrl: 'producto/views/app.html'
             })
+
             .state('producto.app.buscarProductoCuentaPersonal', {
                 url: '/buscar/cuentaPersonal',
                 templateUrl: 'producto/views/producto/form-buscar-producto-cuentaPersonal.html',
