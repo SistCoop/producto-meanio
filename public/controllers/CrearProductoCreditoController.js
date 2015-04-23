@@ -1,8 +1,8 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.producto').controller('CrearProductoCreditoController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona', 'Notification',
-    function($scope, $state, SGProductoCredito, SGTipoPersona, Notification) {
+angular.module('mean.producto').controller('CrearProductoCreditoController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona', 'SGCurrency', 'Notification',
+    function($scope, $state, SGProductoCredito, SGTipoPersona, SGCurrency, Notification) {
 
         $scope.view = {
             producto: SGProductoCredito.$build()
@@ -19,6 +19,7 @@ angular.module('mean.producto').controller('CrearProductoCreditoController', ['$
 
         $scope.loadCombo = function(){
             $scope.combo.tipoPersona = SGTipoPersona.$search().$object;
+            $scope.combo.moneda = SGCurrency.$search().$object;
         };
         $scope.loadCombo();
 
@@ -31,7 +32,7 @@ angular.module('mean.producto').controller('CrearProductoCreditoController', ['$
                         $state.go('^.editarProductoCredito.resumen', {id: response.id});
                     },
                     function error(err){
-                        Notification.error(err.data.message);
+                        Notification.error(err.data ? err.data.message : 'No se pudo verificar la conexion al sistema.');
                     }
                 );
 

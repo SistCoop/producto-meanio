@@ -17,7 +17,7 @@ angular.module('mean.producto').controller('EditarProductoCreditoController', ['
                         Notification.success('Producto actualizado');
                     },
                     function error(err){
-                        Notification.error(err.data.message);
+                        Notification.error(err.data ? err.data.message : 'No se pudo verificar la conexion al sistema.');
                     }
                 );
 
@@ -30,7 +30,7 @@ angular.module('mean.producto').controller('EditarProductoCreditoController', ['
                     Notification.success('Producto desactivado');
                 },
                 function error(err){
-                    Notification.error(err.data.message);
+                    Notification.error(err.data ? err.data.message : 'No se pudo verificar la conexion al sistema.');
                 }
             );
         };

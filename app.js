@@ -66,6 +66,9 @@ Producto.register(function(app, auth, database) {
     Producto.aggregateAsset('js', '../lib/ladda/dist/ladda.min.js');
     Producto.aggregateAsset('js', '../lib/angular-ladda/dist/angular-ladda.min.js');
 
+    //sg-iso4217
+    Producto.aggregateAsset('js', '../lib/sg-iso4217/dist/sg-iso4217.js');
+
     //sg-persona
     Producto.aggregateAsset('js', '../lib/sg-persona/dist/sg-persona.js');
 
@@ -84,6 +87,7 @@ Producto.register(function(app, auth, database) {
         'ui.utils.masks',
         'ui-notification',
         'angular-ladda',
+        'sg-iso4217',
         'sg-persona',
         'sg-producto'
     ]);
