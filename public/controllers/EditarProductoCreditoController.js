@@ -1,8 +1,8 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.producto').controller('EditarProductoCreditoController', ['$scope', '$state', 'productoCredito', 'SGProductoCredito', 'SGTipoPersona', 'Notification',
-    function($scope, $state, productoCredito, SGProductoCredito, SGTipoPersona, Notification) {
+angular.module('mean.producto').controller('EditarProductoCreditoController', ['$scope', '$state', 'productoCredito', 'toastr',
+    function($scope, $state, productoCredito, toastr) {
 
         $scope.view = {
             producto: productoCredito,
@@ -14,10 +14,10 @@ angular.module('mean.producto').controller('EditarProductoCreditoController', ['
 
                 $scope.view.producto.$save().then(
                     function(response){
-                        Notification.success('Producto actualizado');
+                        toastr.success('Producto actualizado', 'Success');
                     },
                     function error(err){
-                        Notification.error(err.data ? err.data.message : 'No se pudo verificar la conexion al sistema.');
+                        toastr.error(err.data.message, 'Error');
                     }
                 );
 
@@ -27,10 +27,10 @@ angular.module('mean.producto').controller('EditarProductoCreditoController', ['
         $scope.desactivar = function(){
             $scope.view.producto.$desactivar().then(
                 function(response){
-                    Notification.success('Producto desactivado');
+                    toastr.success('Producto desactivado', 'Success');
                 },
                 function error(err){
-                    Notification.error(err.data ? err.data.message : 'No se pudo verificar la conexion al sistema.');
+                    toastr.error(err.data.message, 'Error');
                 }
             );
         };

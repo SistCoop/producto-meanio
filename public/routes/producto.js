@@ -46,7 +46,12 @@ angular.module('mean.producto').config(['$stateProvider',
             .state('producto.app.editarProductoCredito.resumen', {
                 url: '/resumen',
                 templateUrl: 'producto/views/producto/form-resumen-producto-credito.html',
-                controller: 'ProductoCreditoResumenCtrl'
+                controller: 'ProductoCreditoResumenController'
+            })
+            .state('producto.app.editarProductoCredito.datosPrincipales', {
+                url: '/datosPrincipales',
+                templateUrl: 'producto/views/producto/form-editar-producto-credito-datosPrincipales.html',
+                controller: 'ProductoCreditoDatosPrincipalesController'
             });
     }
 ]);

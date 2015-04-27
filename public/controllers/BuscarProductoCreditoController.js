@@ -52,7 +52,7 @@ angular.module('mean.producto').controller('BuscarProductoCreditoController', ['
                 {field: 'moneda', displayName: 'moneda'},
                 {field: 'montoMinimo', displayName: 'Minimo', cellFilter: 'currency: ""'},
                 {field: 'montoMaximo', displayName: 'Maximo', cellFilter: 'currency: ""'},
-                {field: 'estado', displayName: 'Estado'},
+                {field: 'estado', displayName: 'Estado', cellFilter: 'si_no : "activo" | uppercase'},
                 {
                     name: 'edit',
                     displayName: 'Edit',
@@ -63,7 +63,7 @@ angular.module('mean.producto').controller('BuscarProductoCreditoController', ['
 
         $scope.gridActions = {
             edit: function(row){
-                $state.go('^.crearProductoCredito.resumen', {id: row.id});
+                $state.go('^.editarProductoCredito.resumen', {id: row.id});
             }
         };
 
@@ -72,6 +72,7 @@ angular.module('mean.producto').controller('BuscarProductoCreditoController', ['
         };
 
         $scope.search = function(){
+
 
             if($scope.combo.selected.tipoPersona){
                 $scope.filterOptions.tipoPersona = $scope.combo.selected.tipoPersona.denominacion;

@@ -1,8 +1,8 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.producto').controller('CrearProductoCreditoController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona', 'SGCurrency', 'Notification',
-    function($scope, $state, SGProductoCredito, SGTipoPersona, SGCurrency, Notification) {
+angular.module('mean.producto').controller('CrearProductoCreditoController', ['$scope', '$state', 'SGProductoCredito', 'SGTipoPersona', 'SGCurrency', 'toastr',
+    function($scope, $state, SGProductoCredito, SGTipoPersona, SGCurrency, toastr) {
 
         $scope.view = {
             producto: SGProductoCredito.$build()
@@ -25,14 +25,15 @@ angular.module('mean.producto').controller('CrearProductoCreditoController', ['$
 
         $scope.submit = function(){
             if($scope.form.$valid){
-
+                $scope.view.producto.moneda = $scope.combo.selected.moneda.alphabeticCode;
+                $scope.view.producto.tipoPersona = $scope.combo.selected.tipoPersona.denominacion;
                 $scope.view.producto.$save().then(
                     function(response){
-                        Notification.success('Producto creado');
+                        toastr.success('Producto creado satisfactoriamente', 'Success');
                         $state.go('^.editarProductoCredito.resumen', {id: response.id});
                     },
                     function error(err){
-                        Notification.error(err.data ? err.data.message : 'No se pudo verificar la conexion al sistema.');
+                        toastr.error(err.data.message, 'Error');
                     }
                 );
 
