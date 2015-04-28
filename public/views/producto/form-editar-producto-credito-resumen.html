@@ -93,6 +93,80 @@
 
     </div>
     <div class="col-sm-6">
+        <div class="panel panel-default panel-border panel-shadow">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tasas asignadas</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table class="table table-striped b-t b-light">
+                        <thead>
+                        <tr>
+                            <th>Nro</th>
+                            <th>Tasa</th>
+                            <th>Valor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in loadObjects.tasas">
+                            <td><span data-ng-bind="$index+1"></span></td>
+                            <td><span data-ng-bind="item.tasa"></span></td>
+                            <td><span data-ng-bind="item.valor | currency: ''"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button type="button" ui-sref="^.tasas" class="btn btn-default">Editar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default panel-border panel-shadow">
+            <div class="panel-heading">
+                <h3 class="panel-title">Caracteristicas</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table class="table table-striped b-t b-light">
+                        <thead>
+                        <tr>
+                            <th>Nro</th>
+                            <th>Descripcion</th>
+                            <th>D.detallada</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in loadObjects.caracteristicas">
+                            <td><span data-ng-bind="$index+1"></span></td>
+                            <td><span data-ng-bind="item.descripcion"></span></td>
+                            <td><span data-ng-bind="item.descripcionDetallada"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button type="button" ui-sref="^.caracteristicas" class="btn btn-default">Editar</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-default panel-border panel-shadow">
+            <div class="panel-heading">
+                <h3 class="panel-title">Comisiones asignadas</h3>
+            </div>
+            <div class="panel-body">
+
+                <button type="button" ui-sref="^.comisiones" class="btn btn-default">Editar</button>
+            </div>
+        </div>
 
     </div>
 </div>
