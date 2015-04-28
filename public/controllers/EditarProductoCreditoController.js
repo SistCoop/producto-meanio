@@ -5,23 +5,7 @@ angular.module('mean.producto').controller('EditarProductoCreditoController', ['
     function($scope, $state, productoCredito, toastr) {
 
         $scope.view = {
-            producto: productoCredito,
-            productoDB: angular.copy(productoCredito)
-        };
-
-        $scope.submit = function(){
-            if($scope.form.$valid){
-
-                $scope.view.producto.$save().then(
-                    function(response){
-                        toastr.success('Producto actualizado', 'Success');
-                    },
-                    function error(err){
-                        toastr.error(err.data.message, 'Error');
-                    }
-                );
-
-            }
+            producto: productoCredito
         };
 
         $scope.desactivar = function(){

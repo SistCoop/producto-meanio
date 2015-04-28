@@ -31,24 +31,26 @@
                     Lista de caracteristicas del producto
                 </div>
                 <div class="row wrapper">
-                    <div class="col-sm-3">
-                        <div class="form-group" data-ng-class="{ 'has-error' : form.descripcion.$invalid && form.descripcion.$dirty}">
-                            <input type="text" name="descripcion" data-ng-model="view.caracteristica.descripcion" data-ng-maxlength="60" class="input-sm form-control" placeholder="Descripcion" autofocus required/>
+                    <form name="form" data-ng-submit="submit()" novalidate>
+                        <div class="col-sm-3">
+                            <div class="form-group" data-ng-class="{ 'has-error' : form.descripcion.$invalid && form.descripcion.$dirty}">
+                                <input type="text" name="descripcion" data-ng-model="view.caracteristica.descripcion" data-ng-maxlength="60" class="input-sm form-control" placeholder="Descripcion" autofocus required/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="form-group">
-                            <input type="text" name="descripcionDetallada" data-ng-model="view.caracteristica.descripcionDetallada" data-ng-maxlength="200" ui-keypress="{13:'addCaracteristica($event)'}" class="input-sm form-control"  placeholder="Descripcion detallada" required/>
+                        <div class="col-sm-7">
+                            <div class="form-group" data-ng-class="{ 'has-error' : form.descripcionDetallada.$invalid && form.descripcionDetallada.$dirty}">
+                                <input type="text" name="descripcionDetallada" data-ng-model="view.caracteristica.descripcionDetallada" data-ng-maxlength="200" class="input-sm form-control"  placeholder="Descripcion detallada" required/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-sm btn-default" data-ng-click="addCaracteristica()">
-                            <i class="fa fa-plus text"></i>
-                            <span class="text">Guardar</span>
-                            <i class="fa fa-minus text-active"></i>
-                            <span class="text-active">Guardar</span>
-                        </button>
-                    </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-sm btn-default" data-ng-click="addCaracteristica()">
+                                <i class="fa fa-plus text"></i>
+                                <span class="text">Guardar</span>
+                                <i class="fa fa-minus text-active"></i>
+                                <span class="text-active">Guardar</span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped b-t b-light">
@@ -88,9 +90,6 @@
                                 </div>
                             </td>
                         </tr>
-
-
-
                         </tbody>
                     </table>
                 </div>

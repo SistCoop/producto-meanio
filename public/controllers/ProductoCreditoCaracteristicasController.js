@@ -1,14 +1,15 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.producto').controller('ProductoCreditoCaracteristicasController', ['$scope', 'productoCredito', 'toastr',
-    function($scope, productoCredito, toastr) {
+angular.module('mean.producto').controller('ProductoCreditoCaracteristicasController', ['$scope', 'productoCredito', 'toastr', 'SGProductoCaracteristica',
+    function($scope, productoCredito, toastr, SGProductoCaracteristica) {
 
         $scope.view = {
             producto: productoCredito,
             caracteristica: {}
         };
 
+        //tabla de caracteristicas del producto
         $scope.loadObjects = {
             caracteristicas: []
         };
@@ -18,11 +19,8 @@ angular.module('mean.producto').controller('ProductoCreditoCaracteristicasContro
         };
         $scope.loadCaracteristicas();
 
-        $scope.addCaracteristica = function($event){
-            if(!angular.isUndefined($event)) {
-                $event.preventDefault();
-            }
-
+        //Crear caracteristica
+        $scope.submit = function(){
             if($scope.form.$valid){
 
                 $scope.view.producto.$addCaracteristica($scope.view.caracteristica).then(
@@ -39,15 +37,33 @@ angular.module('mean.producto').controller('ProductoCreditoCaracteristicasContro
             }
         };
 
+        //Actualizar caracteristica
         $scope.saveCaracteristica = function(data, id) {
-            alert('saved');
+            var obj = SGProductoCaracteristica.$new(id);
+            angular.extend(obj, data);
+            obj.$save().then(
+                function(){
+                    toastr.success('Caracteristica actualizada satisfactoriamente', 'Success');
+                },
+                function error(err){
+                    toastr.error(err.data.message, 'Error');
+                }
+            );
         };
 
-
+        //Eliminar caracteristica
         $scope.removeCaracteristica = function($index){
-            alert('Eliminando');
+            var obj = $scope.loadObjects.caracteristicas[$index];
+            SGProductoCaracteristica.$remove(obj.id).then(
+                function(){
+                    toastr.success('Caracteristica eliminada satisfactoriamente', 'Success');
+                    $scope.loadObjects.caracteristicas.splice($index, 1);
+                },
+                function error(err){
+                    toastr.error(err.data.message, 'Error');
+                }
+            );
         };
-
 
     }
 ]);
