@@ -28,21 +28,21 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Lista de caracteristicas del producto
+                    Lista de tasas del producto
                 </div>
                 <div class="row wrapper">
                     <form name="form" data-ng-submit="submit()" novalidate>
                         <div class="col-sm-3">
-                            <div class="form-group" data-ng-class="{ 'has-error' : form.descripcion.$invalid && form.descripcion.$dirty}">
-                                <input type="text" name="descripcion" data-ng-model="view.caracteristica.descripcion" data-ng-maxlength="60" class="input-sm form-control" placeholder="Descripcion" autofocus required/>
+                            <div class="form-group" data-ng-class="{ 'has-error' : form.tasa.$invalid && form.tasa.$dirty}">
+                                <input type="text" name="tasa" data-ng-model="view.tasa.tasa" data-ng-maxlength="60" class="input-sm form-control" placeholder="Tasa" autofocus required/>
                             </div>
                         </div>
-                        <div class="col-sm-7">
-                            <div class="form-group" data-ng-class="{ 'has-error' : form.descripcionDetallada.$invalid && form.descripcionDetallada.$dirty}">
-                                <input type="text" name="descripcionDetallada" data-ng-model="view.caracteristica.descripcionDetallada" data-ng-maxlength="200" class="input-sm form-control"  placeholder="Descripcion detallada" required/>
+                        <div class="col-sm-3">
+                            <div class="form-group" data-ng-class="{ 'has-error' : form.valor.$invalid && form.valor.$dirty}">
+                                <input type="text" name="valor" data-ng-model="view.tasa.valor" ui-mask="9.99" model-view-value="true" class="input-sm form-control" required/>
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <button type="submit" class="btn btn-sm btn-default">
                                 <i class="fa fa-plus text"></i>
                                 <span class="text">Guardar</span>
@@ -57,26 +57,26 @@
                         <thead>
                         <tr>
                             <th>Nro</th>
-                            <th>Descripcion</th>
-                            <th>Descripcion detallada</th>
+                            <th>Tasa</th>
+                            <th>Valor</th>
                             <th style="width:30px;"></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="item in loadObjects.caracteristicas">
+                        <tr ng-repeat="item in loadObjects.tasas">
                             <td><span data-ng-bind="$index+1"></span></td>
                             <td>
-                                <span editable-text="item.descripcion" e-name="descripcion" e-form="rowform" e-required>
-                                  {{ item.descripcion || 'empty' }}
+                                <span editable-text="item.tasa" e-name="tasa" e-form="rowform" e-required>
+                                  {{ item.tasa || 'empty' }}
                                 </span>
                             </td>
                             <td>
-                                <span editable-text="item.descripcionDetallada" e-name="descripcionDetallada" e-form="rowform" e-required>
-                                  {{ item.descripcionDetallada || 'empty' }}
+                                <span editable-number="item.valor" e-name="valor" e-form="rowform" e-min="0" e-max="1" e-step="any" e-required>
+                                  {{ item.valor | currency: '' }}
                                 </span>
                             </td>
                             <td style="white-space: nowrap">
-                                <form editable-form name="rowform" onbeforesave="saveCaracteristica($data, item.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="false">
+                                <form editable-form name="rowform" onbeforesave="saveTasa($data, item.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="false">
                                     <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-sm btn-primary">
                                         save
                                     </button>
@@ -86,7 +86,7 @@
                                 </form>
                                 <div class="buttons" ng-show="!rowform.$visible">
                                     <button class="btn btn-sm btn-primary" ng-click="rowform.$show()">edit</button>
-                                    <button class="btn btn-sm btn-danger" ng-click="removeCaracteristica($index)">del</button>
+                                    <button class="btn btn-sm btn-danger" ng-click="removeTasa($index)">del</button>
                                 </div>
                             </td>
                         </tr>

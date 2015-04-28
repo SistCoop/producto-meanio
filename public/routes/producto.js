@@ -53,6 +53,11 @@ angular.module('mean.producto').config(['$stateProvider',
                 templateUrl: 'producto/views/producto/form-editar-producto-credito-datosPrincipales.html',
                 controller: 'ProductoCreditoDatosPrincipalesController'
             })
+            .state('producto.app.editarProductoCredito.tasas', {
+                url: '/tasas',
+                templateUrl: 'producto/views/producto/form-editar-producto-credito-tasas.html',
+                controller: 'ProductoCreditoTasasController'
+            })
             .state('producto.app.editarProductoCredito.caracteristicas', {
                 url: '/requisitos',
                 templateUrl: 'producto/views/producto/form-editar-producto-credito-caracteristicas.html',
