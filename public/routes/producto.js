@@ -62,6 +62,11 @@ angular.module('mean.producto').config(['$stateProvider',
                 url: '/requisitos',
                 templateUrl: 'producto/views/producto/form-editar-producto-credito-caracteristicas.html',
                 controller: 'ProductoCreditoCaracteristicasController'
+            })
+            .state('producto.app.editarProductoCredito.comisiones', {
+                url: '/comisiones',
+                templateUrl: 'producto/views/producto/form-editar-producto-credito-comisiones.html',
+                controller: 'ProductoCreditoComisionesController'
             });
     }
 ]);
