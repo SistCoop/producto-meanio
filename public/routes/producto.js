@@ -6,7 +6,7 @@ angular.module('mean.producto').config(['$stateProvider',
             .state('producto', {
                 abstract: true,
                 url: '/producto',
-                templateUrl: 'producto/views/tpls/layout/body.html'
+                templateUrl: 'producto/views/_body.html'
             })
             .state('producto.home', {
                 url: '/home',
