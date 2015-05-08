@@ -24,7 +24,7 @@ Producto.register(function(app, auth, database) {
         menu: 'main'
     });
 
-    Producto.aggregateAsset('css', 'producto.css');
+    //Producto.aggregateAsset('css', 'producto.css');
 
     return Producto;
 });
